@@ -5,9 +5,9 @@ function WindTurbine:CalcProduction()
   local elevation_bonus = self:GetElevationBonus()
     local production_bonus = 100 + (elevation_bonus - 50) 
 	--Wind Fluctuation Parameters
-	local wind_fluctuation_period = 32				--in hours (25h = 1 day) 
-	local wind_fluctuation_min_production = 40		-- in percentage of Base
-	local wind_fluctuation_amplitude	= 60		-- in percentage of Base 
+	local wind_fluctuation_period = rawget(_G, "ModConfig") and ModConfig:Get("Period-Hours", "wf_period") or 32				--in hours (25h = 1 day) 
+	local wind_fluctuation_min_production = rawget(_G, "ModConfig") and ModConfig:Get("Min-Production", "wf_min_prod") or 40		-- in percentage of Base
+	local wind_fluctuation_amplitude	= rawget(_G, "ModConfig") and ModConfig:Get("Amplitude", "wf_amplitude") or 60		-- in percentage of Base 
 	-- if the latter 2 values add up to 100 the median production is that of Base
 	--Amplitude of sin is 4096 in game. +1 to keep it positive
 	local wind_fluctuation = (((sin((360*60*GameTime())/(wind_fluctuation_period*const.HourDuration))/4096.0)+1)*wind_fluctuation_amplitude/100.0+wind_fluctuation_min_production/100.0)*self:GetClassValue("electricity_production")

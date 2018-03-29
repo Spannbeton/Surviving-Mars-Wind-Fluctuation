@@ -6,10 +6,11 @@ return PlaceObj('ModDef', {
 	'id', "ALfPenC",
 	'steam_id', "1344569334",
 	'author', "Spannbeton",
-	'version', 2,
+	'version', 3,
 	'lua_revision', 228184,
 	'code', {
-		"Code/Script.lua",
+		"Code/Mod Config.lua",
+		"Code/Wind Fluctuation.lua",
 	},
-	'saved', 1522243111,
+	'saved', 1522313596,
 })
